@@ -37,12 +37,13 @@ const scissorsBtn = document.getElementById('scissorsBtn');
 scissorsBtn.addEventListener('click', playerPlay);
 
 function playerPlay(e) {
-  console.log(e.target.attributes.value.nodeValue);
-  // let playerSelection = ;
-  // console.log(`Player Chooses ${playerSelection}`);
-  // return playerSelection;
+  playerChoice = e.target.attributes.value.nodeValue;
+  showPlayerChoice(playerChoice);
 }
 
+function showPlayerChoice(choice) {
+  console.log(`You chose ${choice}!`);
+}
 //Is the input valid?
 
 // function inputValidation(value) {
