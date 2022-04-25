@@ -1,5 +1,5 @@
 // Declare global variables
-
+let $ = document.getElementById;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -26,15 +26,13 @@ function computerPlay() {
 }
 function whoWinsGame(playerScore, computerScore) {
   if (playerScore === 5) {
-    document.getElementById('computerChose').textContent = '';
-    document.getElementById('playerChose').textContent = '';
-    document.getElementById('resultsOutcome').textContent =
-      'You Win! You beat the Computer!';
+    $('computerChose').textContent = '';
+    $('playerChose').textContent = '';
+    $('resultsOutcome').textContent = 'You Win! You beat the Computer!';
   } else if (computerScore === 5) {
-    document.getElementById('computerChose').textContent = '';
-    document.getElementById('playerChose').textContent = '';
-    document.getElementById('resultsOutcome').textContent =
-      'You Lose! The Computer wins!';
+    $('computerChose').textContent = '';
+    $('playerChose').textContent = '';
+    $('resultsOutcome').textContent = 'You Lose! The Computer wins!';
   } else;
 }
 
@@ -42,9 +40,9 @@ function whoWinsRound(playerChoice, computerChoice) {
   let player = playerChoice.toLowerCase();
   let computer = computerChoice.toLowerCase();
   if (player === computer) {
-    document.getElementById(
-      'resultsOutcome'
-    ).textContent = `A tie! You both chose ${capitalise(player)}!`;
+    $('resultsOutcome').textContent = `A tie! You both chose ${capitalise(
+      player
+    )}!`;
   } else if (
     (player === 'rock' && computer === 'paper') ||
     (player === 'paper' && computer === 'scissors') ||
@@ -53,10 +51,8 @@ function whoWinsRound(playerChoice, computerChoice) {
     computerScore++;
     console.log({ computerScore });
     // Update computer score.
-    document.getElementById('computerScore').textContent = `${computerScore}`;
-    document.getElementById(
-      'resultsOutcome'
-    ).textContent = `You lost the round! ${capitalise(
+    $('computerScore').textContent = `${computerScore}`;
+    $('resultsOutcome').textContent = `You lost the round! ${capitalise(
       computer
     )} beats ${capitalise(player)}!`;
   } else if (
@@ -67,23 +63,21 @@ function whoWinsRound(playerChoice, computerChoice) {
     playerScore++;
     console.log({ playerScore });
     // Update player score display.
-    document.getElementById('playerScore').textContent = `${playerScore}`;
-    document.getElementById(
-      'resultsOutcome'
-    ).textContent = `You won the round! ${capitalise(
+    $('playerScore').textContent = `${playerScore}`;
+    $('resultsOutcome').textContent = `You won the round! ${capitalise(
       player
     )} beats ${capitalise(computer)}`;
   }
 }
 
 // Event listener watching buttons for user input
-const rockBtn = document.getElementById('rockBtn');
+const rockBtn = $('rockBtn');
 rockBtn.addEventListener('click', playRound);
 
-const paperBtn = document.getElementById('paperBtn');
+const paperBtn = $('paperBtn');
 paperBtn.addEventListener('click', playRound);
 
-const scissorsBtn = document.getElementById('scissorsBtn');
+const scissorsBtn = $('scissorsBtn');
 scissorsBtn.addEventListener('click', playRound);
 
 // When click happens...
@@ -95,16 +89,12 @@ function playRound(c) {
   console.log({ playerChoice });
 
   // Display the computer choice in the designated place.
-  document.getElementById(
-    'computerChose'
-  ).textContent = `Computer chose ${computerChoice}!`;
+  $('computerChose').textContent = `Computer chose ${computerChoice}!`;
 
   // Display the player choice in the designated place.
 
   console.log(`You chose ${playerChoice}!`);
-  document.getElementById(
-    'playerChose'
-  ).textContent = `You chose ${playerChoice}!`;
+  $('playerChose').textContent = `You chose ${playerChoice}!`;
 
   // Pass the player and computer choices to function to compare and determine round winner.
   whoWinsRound(playerChoice, computerChoice);
